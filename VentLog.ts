@@ -4,22 +4,22 @@ enum ELogLevel {
   "Info",
 }
 class Log {
-  public level: ELogLevel = ELogLevel.Info;
-  constructor() {
+  private level: ELogLevel = ELogLevel.Info;
+  public constructor() {
     this.level = ELogLevel.Info; //默认设置为INFO输出级别
   }
-  setLevel(logEvel: ELogLevel): void {
+  public setLevel(logEvel: ELogLevel): void {
     this.level = logEvel;
   }
-  error(msg: string): void {
+  public error(msg: string): void {
     if (this.level >= ELogLevel.Error)
       console.log("\u001b[31m[Error]:", msg, "\u001b[0m");
   }
-  warning(msg: string): void {
+  public warning(msg: string): void {
     if (this.level >= ELogLevel.Warning)
       console.log("\u001b[33m[Warning]:", msg, "\u001b[0m");
   }
-  info(msg: string): void {
+  public info(msg: string): void {
     if (this.level >= ELogLevel.Info)
       console.log("\u001b[34m[Info]:", msg, "\u001b[0m");
   }
