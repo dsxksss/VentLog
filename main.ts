@@ -1,11 +1,13 @@
 import Log from "./VentLog.ts";
+import ELogLevel from "./ELogLevel.ts";
 
 function main(): void {
   const log = new Log();
-  log.info("你好胖");
-  log.error("严重错误");
-  log.warning("警告错误");
-  log.showLog();
+  log.setLevel(ELogLevel.Error);
+  log.error("错误日志");
+  log.warning("警告日志");
+  log.info("普通日志");
+  // log.showLog();
 }
 
 main();
