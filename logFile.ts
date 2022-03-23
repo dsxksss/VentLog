@@ -2,19 +2,23 @@ import getTime from "./getTime.ts";
 
 const readLog = async (fileName: string) => {
   const filename = fileName;
-  const fileCode = new TextDecoder("utf-8");
+  //创建utf-8解码器
+  const fileDecoder = new TextDecoder("utf-8");
   const data = await Deno.readFile(filename);
-  console.log(fileCode.decode(data));
+  //输出解码后的信息
+  console.log(fileDecoder.decode(data));
 };
 
 const writeLog = async (fileName: string, data: string) => {
   const filename = fileName;
-  const fileWrite = new TextEncoder();
+  //创建编码器
+  const fileEncoder = new TextEncoder();
   await Deno.writeFile(
     filename,
-    fileWrite.encode(`${data} \t[${getTime()}]\n`),
+    //编码后写入信息至文件
+    fileEncoder.encode(`${data} \t[${getTime()}]\n`),
     {
-      append: true,
+      append: true, //以追加模式写入
     }
   );
 };
