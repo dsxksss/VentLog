@@ -10,9 +10,13 @@ const readLog = async (fileName: string) => {
 const writeLog = async (fileName: string, data: string) => {
   const filename = fileName;
   const fileWrite = new TextEncoder();
-  await Deno.writeFile(filename, fileWrite.encode(`${data} \t${getTime()}\n`), {
-    append: true,
-  });
+  await Deno.writeFile(
+    filename,
+    fileWrite.encode(`${data} \t[${getTime()}]\n`),
+    {
+      append: true,
+    }
+  );
 };
 
 export { readLog, writeLog };
